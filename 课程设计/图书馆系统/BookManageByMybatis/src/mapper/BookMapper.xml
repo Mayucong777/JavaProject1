@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.IBookDAO">
+	
+	<insert id="Create" parameterType="vo.Book" >
+		insert into book(bookID,bookname,supply,author,booktype,inventory)
+		values(#{bookID},#{bookname},#{supply},#{author},#{booktype},#{inventory})
+	</insert>
+	
+	<update id="Update" parameterType="vo.Book">
+		update book
+		<set>
+			<if test="bookname !=null and bookname!='' ">bookname=#{bookname},</if> 
+			<if test="supply != null and supply!='' ">supply=#{supply},</if>
+			<if test="author != null and author!='' ">author=#{author},</if>
+			<if test="booktype != null and booktype!='' ">booktype=#{booktype},</if>
+			<if test="inventory >=0  ">inventory=#{inventory}</if>
+		</set> 
+		<where >bookID = #{bookID}</where>
+	</update>
+	
+	<delete id="Remove" parameterType="vo.Book">
+		delete from book
+		<where>
+			<if test="bookID!=null and bookID!='' ">and bookID=#{bookID}</if>
+			<if test="bookname !=null and bookname!='' ">and bookname=#{bookname}</if>
+			<if test="supply != null and supply!='' ">and supply=#{supply}</if>
+			<if test="author != null and author!='' ">and author=#{author}</if>
+			<if test="booktype != null and booktype!='' ">and booktype=#{booktype}</if>
+			<if test="inventory >=0 ">and inventory=#{inventory}</if>
+		</where> 
+	</delete>
+	
+	<select id="Query" parameterType="vo.Book" resultType="vo.Book">
+		select * from book
+		<where>
+			<if test="bookID!=null and bookID!='' ">and bookID=#{bookID}</if>
+			<if test="bookname !=null and bookname!='' ">and bookname like '%${bookname}%'</if>
+			<if test="supply != null and supply!='' ">and supply like '%${supply}%'</if>
+			<if test="author != null and author!='' ">and author like '%${author}%'</if>
+			<if test="booktype != null and booktype!='' ">and booktype like '%${booktype}%'</if>
+			<if test="inventory >=0 and inventory !=null and inventory!='' ">and inventory=#{inventory}</if>
+		</where>
+	</select>
+	
+</mapper>

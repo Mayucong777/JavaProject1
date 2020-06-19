@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="dao.IBorrowdetailDAO">
+	
+	<insert id="Create" parameterType="vo.Borrowdetail" >
+		insert into borrowdetail(jyh,username,userID,bookname,bookID,time,duration,state)
+		values(#{jyh},#{username},#{userID},#{bookname},#{bookID},#{time},#{duration},#{state})
+	</insert>
+	
+	<update id="Update" parameterType="vo.Borrowdetail">
+		update borrowdetail
+		<set>
+			<if test="username !=null and username!='' ">username=#{username},</if> 
+			<if test="userID != null and userID!='' ">userID=#{userID},</if>
+			<if test="bookname !=null and bookname!='' ">bookname=#{bookname},</if> 
+			<if test="bookID != null and bookID!='' ">bookID=#{bookID},</if>
+			<if test="time != null and time!='' ">time=#{time},</if>
+			<if test="duration >0 ">duration=#{duration},</if>
+			<if test="state != null and state!='' ">state=#{state}</if>
+		</set> 
+		<where >jyh = #{jyh}</where>
+	</update>
+	
+	<delete id="Remove" parameterType="vo.Borrowdetail">
+		delete from borrowdetail
+		<where>
+			<if test="jyh !=null and jyh!='' ">and jyh=#{jyh}</if>
+			<if test="username !=null and username!='' ">and username=#{username}</if> 
+			<if test="userID != null and userID!='' ">and userID=#{userID}</if>
+			<if test="bookname !=null and bookname!='' ">and bookname=#{bookname}</if> 
+			<if test="bookID != null and bookID!='' ">and bookID=#{bookID}</if>
+			<if test="time != null and time!='' ">and time=#{time}</if>
+			<if test="duration >0 ">and duration=#{duration}</if>
+			<if test="state != null and state!='' ">and state=#{state}</if>
+		</where> 
+	</delete>
+	
+	<select id="Query" parameterType="vo.Borrowdetail" resultType="vo.Borrowdetail">
+		select * from borrowdetail
+		<where>
+			<if test="jyh !=null and jyh!='' ">and jyh=#{jyh}</if>
+			<if test="username !=null and username!='' ">and username=#{username}</if> 
+			<if test="userID != null and userID!='' ">and userID=#{userID}</if>
+			<if test="bookname !=null and bookname!='' ">and bookname=#{bookname}</if> 
+			<if test="bookID != null and bookID!='' ">and bookID=#{bookID}</if>
+			<if test="time != null and time!='' ">and left(time,10)=#{time}</if>
+			<if test="duration >0 ">and duration=#{duration}</if>
+			<if test="state != null and state!='' ">and state=#{state}</if>
+		</where>
+	</select>
+	
+	<select id="GetMaxJyh" parameterType="String" resultType="String">
+		select max(right(jyh,4)) as
+		maxJyh
+		from borrowdetail
+		where left(jyh,8)=#{day}
+	</select>
+	
+</mapper>
