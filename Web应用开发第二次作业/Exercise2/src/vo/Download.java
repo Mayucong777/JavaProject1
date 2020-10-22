@@ -7,10 +7,10 @@ public class Download {
 	private String name;
 	private String path;
 	private String description;
-	private long size;
+	private int size;
 	private int star;
 	private String image;
-	private Date time;
+	private String time;
 	
 	
 	public Download() {
@@ -18,7 +18,20 @@ public class Download {
 		// TODO Auto-generated constructor stub
 	}
 	public Download(int id, String name, String path, String description,
-			long size, int star, String image) {
+			int size, int star, String image,String time) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.path = path;
+		this.description = description;
+		this.size = size;
+		this.star = star;
+		this.image = image;
+		this.time = time;
+	}
+	
+	public Download(int id, String name, String path, String description,
+			int size, int star, String image) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,10 +65,10 @@ public class Download {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public long getSize() {
+	public int getSize() {
 		return size;
 	}
-	public void setSize(long size) {
+	public void setSize(int size) {
 		this.size = size;
 	}
 	public int getStar() {
@@ -70,10 +83,17 @@ public class Download {
 	public void setImage(String image) {
 		this.image = image;
 	}
+
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 	@Override
 	public String toString() {
 		return "UserDao [id=" + id + ", name=" + name + ", path=" + path
 				+ ", description=" + description + ", size=" + size + ", star="
-				+ star + ", image=" + image + "]";
+				+ star + ", image=" + image + ",time="+time+"]";
 	}
 }

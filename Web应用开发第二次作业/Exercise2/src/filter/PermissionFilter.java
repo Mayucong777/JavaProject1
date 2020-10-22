@@ -56,9 +56,10 @@ public class PermissionFilter implements Filter {
 			if(list.contains(path)){
 				chain.doFilter(request,resp);
 			}else{
-				request.setAttribute("errorInfo", "普通用户没有权限访问");
-				request.setAttribute("path", "login.html");
-				request.getRequestDispatcher("/error.jsp").forward(request, resp);
+				request.setAttribute("info", "普通用户没有权限访问");
+				request.setAttribute("path", path);
+				request.setAttribute("list", list);
+				request.getRequestDispatcher("/block.jsp").forward(request, resp);
 			}
 		}
 	}

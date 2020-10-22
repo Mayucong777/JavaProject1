@@ -26,6 +26,8 @@ public class UserDao {
 				user = new User(rs.getString("userName"), rs.getString("password"),
 						rs.getString("chrName"));
 			}
+			rs.close();
+			pst.close();
 			// 6.πÿ±’¡¨Ω”
 			con.close();
 		} catch (Exception e) {

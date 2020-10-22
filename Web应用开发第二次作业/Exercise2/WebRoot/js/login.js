@@ -9,17 +9,17 @@ function changeCode(){
             var Code = document.getElementById("userCode");
             var form = document.getElementById("formLogin");
             if(username.value==""){
-                alert("用户名不能为空");
+                alert("鐢ㄦ埛鍚嶄笉鑳戒负绌�");
                 form.action="";
                 return;
             }
             if(password.value==""){
-                alert("密码不能为空");
+                alert("瀵嗙爜涓嶈兘涓虹┖");
                 form.action="";
                 return;
             }
             if(Code.value==""){
-                alert("验证码不能为空");
+                alert("楠岃瘉鐮佷笉鑳戒负绌�");
                 form.action="";
                 return;
             }
