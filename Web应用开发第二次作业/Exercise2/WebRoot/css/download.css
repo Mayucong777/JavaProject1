@@ -1,46 +1,19 @@
 body {
-	background-image: url(../imgs/background.png);
-	background-position: center 0;
+	background-image: url('../imgs/background.png');
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 	background-size: cover;
-	-webkit-background-size: cover;
-	zoom: 1;
+	margin: 0;
+	padding: 0;
 }
 
-.div1 {
-	position: relative;
-	text-align: center;
-	margin-top: 50px;
-}
-
-.line {
-	width: 96%;
-	height: 5px;
-	background: black;
-	position: absolute;
-	top: 15%;
-	left: 2%;
-}
-
-.star {
-	width: 80px;
-	height: 15px;
-	background: url(../imgs/星级.png) no-repeat -80px 0px;
-	display: inline-block;
-}
-
-.star span {
-	height: 15px;
-	background: url(../imgs/星级.png) no-repeat 0px 0px;
-	display: inline-block;
-}
-
-.div2 {
-	width: 50%;
-	position: relative;
-	left: 25%;
-	height: 5px;
+div {
+	background-color: white;
+	width: 500px;
+	height: 200px;
+	border: 2px solid black;
+	padding: 20px;
+	margin: center;
+	border-radius: 12px;
 }
 
 .button {
@@ -61,4 +34,8 @@ body {
 .button:hover {
 	background: #2ecc71;
 	border-color: #2ecc71;
+}
+
+.margin {
+	margin-left: 10%;
 }

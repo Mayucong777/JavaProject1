@@ -32,6 +32,12 @@ public class databaseConnection  {
 			DBURL=property.getProperty("DBURL");
 			DBUSER=property.getProperty("DBUSER");
 			PASSWORD=property.getProperty("PASSWORD");
+			/*
+			DBDRIVER="com.mysql.jdbc.Driver";
+					DBURL="jdbc:mysql://localhost:3306/exercise?useUnicode=true&characterEncoding=utf-8";
+					DBUSER="root";
+					PASSWORD="122903";
+			*/
 			//¼ÓÔØÇý¶¯
 			Class.forName(DBDRIVER);
 		} catch (Exception e) {

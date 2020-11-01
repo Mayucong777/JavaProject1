@@ -12,46 +12,26 @@ import vo.User;
 
 public class DownloadDao {
 	
-	private Connection con;
-	public DownloadDao(Connection con) {
-		this.con=con;
-	}
-	
 	public List<Download> get() {
 		List<Download> DownloadList=new ArrayList<Download>();
-		//Download download = null;
+		Download download = null;
 		try {
-			/*
 			// 1.加载类
 			Class.forName("com.mysql.jdbc.Driver");
 			// 2.建立数据库连接
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/exercise?useunicode=true&character=utf-8", "root", "122903");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/excise?useunicode=true&character=utf-8", "root", "03251115..");
 			// 3.创建语句
-			 * 
-			 * download = new Download(rs.getInt("id"), rs.getString("name"),
-						rs.getString("path"), rs.getString("description"),rs.getLong("size"),
-						rs.getInt("star"),rs.getString("image"),rs.getDate("time"));
-			 */
-			String sql = "select * from t_downloadlist";
+			String sql = "select * from t_download where 1=1";
 			PreparedStatement pst = con.prepareStatement(sql);
 			// 4.执行语句
 			
-			ResultSet resultSet = pst.executeQuery();
+			ResultSet rs = pst.executeQuery();
 			// 5.响应处理
-			while (resultSet.next()) {
-				Download download = new Download();
-                download.setId(resultSet.getInt(1));
-                download.setName(resultSet.getString(2));
-                download.setPath(resultSet.getString(3));
-                download.setDescription(resultSet.getString(4));
-                download.setSize(resultSet.getInt(5));
-                download.setStar(resultSet.getInt(6));
-                download.setImage(resultSet.getString(7));
-                download.setTime(resultSet.getString(8));
+			if (rs.next()) {
+				download = new Download(rs.getInt("id"), rs.getString("name"),
+						rs.getString("path"), rs.getString("description"),rs.getLong("size"),rs.getInt("star"),rs.getString("image"));
 				DownloadList.add(download);
 			}
-			resultSet.close();
-			pst.close();
 			// 6.关闭连接
 			con.close();
 		} catch (Exception e) {
@@ -60,16 +40,16 @@ public class DownloadDao {
 
 		return DownloadList;
     }
-	/*
+	
 	public Download findById(int id){
 		Download download=null;
 		try {
 			// 1.加载类
 			Class.forName("com.mysql.jdbc.Driver");
 			// 2.建立数据库连接
-			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/exercise?useunicode=true&character=utf-8", "root", "122903");
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/excise?useunicode=true&character=utf-8", "root", "03251115..");
 			// 3.创建语句
-			String sql = "select * from t_downloadlist where id=?";
+			String sql = "select * from t_download where id=?";
 			PreparedStatement pst = con.prepareStatement(sql);
 			// 4.执行语句
 			pst.setInt(1, id);
@@ -77,7 +57,7 @@ public class DownloadDao {
 			// 5.响应处理
 			if (rs.next()) {
 				download = new Download(rs.getInt("id"), rs.getString("name"),
-						rs.getString("path"), rs.getString("description"),rs.getLong("size"),rs.getInt("star"),rs.getString("image"),rs.getDate("time"));
+						rs.getString("path"), rs.getString("description"),rs.getLong("size"),rs.getInt("star"),rs.getString("image"));
 				
 			}
 			// 6.关闭连接
@@ -88,5 +68,4 @@ public class DownloadDao {
 
 		return download;
 	}
-	*/
 }

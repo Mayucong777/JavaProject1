@@ -10,9 +10,9 @@
   <li style="background-color:white; borader:left;"><img src="../imgs/logo.png"/>&nbsp;</li>
   <li><a class="active" href="#home">首页</a></li>
   <li><a href="GetDownloadListController">资源下载</a></li>
-  <li><a href="../userManage.jsp">用户管理</a></li>
-  <li><a href="../resourseManage.jsp">资源管理</a></li>
-  <li><a href="../PersonalCenter.jsp">个人中心</a></li>
+  <li><a href="userManage.jsp">用户管理</a></li>
+  <li><a href="resourseManage.jsp">资源管理</a></li>
+  <li><a href="PersonalCenter.jsp">个人中心</a></li>
   <li style="float:right"><a href="LogoutController">安全退出</a></li>
   <li style="float:right"><a href="#about">当前用户：${currentUser.chrName} </a></li>
 </ul>
