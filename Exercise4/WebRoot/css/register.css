@@ -1,0 +1,114 @@
+body{
+	background-image: url(../imgs/3.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+#loginForm{
+    width: 300px;
+    padding: 3px 30px;
+    margin: 200px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 100px;
+    top: 180px;
+    text-align: center;
+    border-style:solid;
+    border-color: white;
+    border-radius:12px;
+}
+
+#p p{
+    color: white;
+	font-weight: bold;
+	font-size: 18px;
+    text-transform: uppercase;
+    
+}
+
+div p2{
+    color: white;
+	font-size: 18px;
+    text-transform: uppercase;
+    
+}
+
+#button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    width: 170px;
+}
+
+#button:hover {
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+
+
+#registerForm p img{
+	position: absolute;
+	top: 9px;
+	left: 20px;
+	border-radius: 4px;
+}
+
+#registerForm p {
+    width: 86%;
+    position: relative;
+   
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#loginForm input[type='text'], #loginForm input[type='password']
+    {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 2px auto;
+    text-align: left;
+    border: 2px solid #f6f7f8;
+    padding: 14px 40px;
+    width: 150px;
+    outline: none;
+    color: rgb(86, 87, 87);
+    border-radius: 12px;
+    transition: 0.25s;
+}
+
+#registerForm select {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 2px auto;
+    text-align: left;
+    border: 2px solid #f6f7f8;
+    padding: 14px 40px;
+    width: 230px;
+    outline: none;
+    color: rgb(86, 87, 87);
+    border-radius: 12px;
+    transition: 0.25s;
+	
+}
+
+.auth_err {
+    font-size: 6px;
+    color: red;
+    display: block;
+    height: 2px;
+    line-height: 16px;
+    text-indent: 18px;
+	text-align: left;
+}

@@ -1,0 +1,149 @@
+body{
+	background-image: url(../imgs/background.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+}
+.pageHead form{
+	float: left;
+	margin-top: 5px;
+	
+	position: absolute;
+	width: 450px;
+	height: 50px;
+	
+}
+
+.page{
+	margin: 10px auto;
+	width: 850px;
+	font-size: 14px;
+}
+div.pageHead{
+	width: 850px;
+	height: 50px;
+}
+div.pageHead input{
+	width: 100px;
+	height: 25px;
+}
+.div1 {
+	position: relative;
+	text-align: center;
+	font-weight:bold;
+}
+
+.line {
+	width: 96%;
+	height: 2px;
+	background: black;
+	position: absolute;
+	top: 8%;
+	left: 2%;
+}
+
+.pageHead input{
+	width: 120px;
+	height: 20px;
+}
+
+.bt{
+	float: right;
+}
+
+.pageHead a {
+    float: left;
+    height: 30px;
+    width: 70px;
+    line-height: 30px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 5px;
+	margin-right: 3px;
+	border-radius: 6px;
+}
+
+#btSearch {
+    background: #1e9fff url(../imgs/查找.png) no-repeat 2px center;
+}
+
+#btClear {
+    background: #ff5722 url(../imgs/清空.png) no-repeat 2px center;
+}
+
+#btAdd {
+    background: #009688 url(../imgs/增加.png) no-repeat 2px center;
+}
+
+#btDelete {
+    background: #ffb800 url(../imgs/删%20除.png) no-repeat 0px center;
+}
+
+#btUpdate {
+    background: #09c url(../imgs/修改.png) no-repeat 1px center;
+    margin-right: 0px;
+}
+
+.page table {
+    width: 850px;
+    border: 2px solid #d0d0d0;
+    text-align: center;
+    /*相邻边被合并*/
+    border-collapse: collapse;
+    border-spacing: 2px;
+    /*行和单元格的边框在横向和纵向上的间距*/
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+td,
+th {
+    border: 1px solid #d0d0d0;
+}
+
+
+/* 标题行 */
+
+thead tr {
+    background-color: #4CAF50;
+    font: bold 14px;
+    color: #fff;
+    height: 30px;
+}
+
+tbody tr {
+    height: 30px;
+    line-height: 30px;
+}
+
+.tr_even {
+    background-color: #eee;
+}
+
+.tr_odd {
+    background-color: #fff
+}
+
+.tr_hover {
+    background-color: #ffffcc
+}
+
+.tr_select {
+    background-color: #aaa;
+}
+
+div.pageBottom{
+	position: absolute;
+	width: 850px;
+}
+div.pageSize{
+	float: left;
+}
+div.pageNav{
+	float: right;
+}
