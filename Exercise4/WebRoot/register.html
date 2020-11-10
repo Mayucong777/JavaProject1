@@ -22,6 +22,7 @@
 			</div>
 			<div>
 				<form action="" method="post" id="registerForm">
+					<input id="action" name="action" type="text" hidden />
 					<p>
 						<img src="imgs/用户.png" width="30" height="30" alt=""/>
 						<input type="text" placeholder="用户名" name="userName" id="userName" onblur="checkUsername()">
@@ -29,24 +30,24 @@
 					</p>
 					<p>
 						<img src="imgs/用户.png" width="30" height="30" alt=""/>
-						<input type="text" placeholder="真实姓名" name="name" id="name" onblur="checkName()">
+						<input type="text" placeholder="真实姓名" name="chrName" id="chrName" onblur="checkName()">
 						<span class="auth_err" id="nameInfo"></span>
 					</p>
 					<p>
 						<img src="imgs/邮件2.png" width="30" height="30" alt=""/>
-						<input type="text" placeholder="邮箱" name="E-mail" id="E-mail" onblur="checkEmail()">
+						<input type="text" placeholder="邮箱" name="mail" id="mail" onblur="checkEmail()">
 						<span class="auth_err" id="E-mailInfo"></span>
 					</p>
 					<p>
 						<img src="imgs/城市2.png" width="30" height="30" alt=""/>
-						<select name="provinceCode" id="province">
+						<select name="provinceCode" id="provinceCode">
 							<option value="">请选择省份</option>
 						</select>
 						<span class="auth_err" id="provinceError"> </span>
 					</p>
 					<p>
 						<img src="imgs/城市2.png" width="30" height="30" alt=""/>
-						<select name="cityCode" id="city">
+						<select name="cityCode" id="cityCode">
 							<option value="">请选择城市</option>
 						</select>
 						<span class="auth_err" id="cityError"> </span>

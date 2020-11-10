@@ -9,10 +9,10 @@ var province_correct = false;
 function checkEmail(){
     
 	$("#E-mailInfo").text("");
-    var str = $("#E-mail").val(); 
+    var str = $("#mail").val(); 
     var pattern = /[\w]*[@][\w]*[\.][com|net|gov]/;
 	
-    if($("#E-mail").val()==""){
+    if($("#mail").val()==""){
 		$("#E-mailInfo").css("color","red");
         $("#E-mailInfo").text("电子邮箱不能为空");
     }else{
@@ -89,7 +89,7 @@ function checkUsername(){
 }
 function checkName(){
     
-    var str = $("#name").val(); 
+    var str = $("#chrName").val(); 
     var pattern = /^[\u4e00-\u9fa5]{2,5}$/;
 	console.log(str);
     if(str.length==0){
@@ -168,7 +168,7 @@ function fillProvince(){
         data: {},
         dataType: "json",
         success: function (response) {
-            var provinceElement=document.getElementById("province");
+            var provinceElement=document.getElementById("provinceCode");
             console.log("console.log");
             
             provinceElement.options.length=0;
@@ -181,6 +181,37 @@ function fillProvince(){
         }
     });
 }
+
+var fillCity = function(cityCode){
+	var provinceCode = $("#provinceCode").val();
+	if (provinceCode == "") {
+	    $("#provinceError").css("color", "red");
+	    $("#provinceError").text("必须选择省份！");
+	    return;
+	}
+	province_correct = true;
+	$("#provinceError").text("");
+	$("#cityCode").empty();
+	$("#cityCode").append($("<option>").val("").text("请选择城市"));
+	    $.ajax({
+	        type: "post",
+	        url: "getProvinceCity.do",
+	        data: {provinceCode:provinceCode},
+	        dataType: "json",
+	        success: function (response) {
+	            for(var index=0;index<response.length;index++){
+	                var option =$("<option>").val(response[index].cityCode).text(response[index].cityName);
+	                $("#cityCode").append(option);
+	            }
+				//若城市代码不为0，将此空填为该城市
+				if ($("#cityCode").val != "") {
+					$("#cityCode").val(cityCode);
+				    city_correct = true;
+				}
+	        }
+	    });
+}
+
 function register(){
 	console.log(userT); 
 	console.log(nameT); 
@@ -192,10 +223,10 @@ function register(){
         var flag = "1";
 		var userName=document.getElementById("userName").value;
 		var password=document.getElementById("password").value;
-		var name=document.getElementById("name").value;
-		var mail=document.getElementById("E-mail").value;
-		var province=document.getElementById("province").value;
-		var city=document.getElementById("city").value;
+		var name=document.getElementById("chrName").value;
+		var mail=document.getElementById("mail").value;
+		var province=document.getElementById("provinceCode").value;
+		var city=document.getElementById("cityCode").value;
         $.ajax({
             type: "post",
             url: "ajaxRegisterCheck.do",
@@ -204,13 +235,30 @@ function register(){
             success: function (response) {
 				
                 if(response.register==0){
-                	console.log("注册成功"); 
-					alert("注册成功");
-                	window.location.href="login.html";
+                	if ($("#action").val() = "update") {
+						alert("修改成功");
+                	    CloseDiv('MyDiv', 'fade');
+                	    reload();
+                	} else {
+						if ($("#action").val() = "insert") {
+							alert("添加成功");
+						    CloseDiv('MyDiv', 'fade');
+						    reload();
+						}else{
+							alert("注册成功");
+							window.location.href = "login.html";
+						}
+                	}
                 }else{
-					console.log(response.register);
-					console.log("注册失败"); 
-					alert("注册失败");
+					if ($("#action").val() = "update") {
+						alert("修改失败");
+					} else {
+						if ($("#action").val() = "insert") {
+							alert("添加失败");
+						}else{
+							alert("注册失败");
+						}
+					}
 				}
                 
                     
@@ -230,34 +278,11 @@ function register(){
 $(document).ready(function(f){
 //    alert("alert");
 	fillProvince();
-    $("#province").change(function(e){
-        $("#city").empty();
-        $("#city").append($("<option>").val("").text("请选择城市"));
-        if($(this).val()=="请选择城市"){
-            $("#provinceError").css("color","red");
-            $("#provinceError").text("省份不能为空");
-            return;
-        }
-        province_correct=true;
-        proT=true;
-        $("#provinceError").text("");
-        var provinceCode=$("#province").val();
-        $.ajax({
-            type: "post",
-            url: "getProvinceCity.do",
-            data: {provinceCode:provinceCode},
-            dataType: "json",
-            success: function (response) {
-                for(var index=0;index<response.length;index++){
-                    var option =$("<option>").val(response[index].cityCode).text(response[index].cityName);
-                    $("#city").append(option);
-                }
-            }
-        });
-    });
+	$("#provinceCode").change(fillCity); //绑定省份下拉框变化事件
+    
 	
-	$("#city").blur(function(e) {
-	        if ($("#city").val() == "") {
+	$("#cityCode").blur(function(e) {
+	        if ($("#cityCode").val() == "") {
 	            $("#cityError").css("color", "red");
 	            $("#cityError").text("城市不能为空");
 	        } else {
@@ -266,7 +291,7 @@ $(document).ready(function(f){
 	        }
 	    });
 	
-	$("#province").blur(function(e) {
+	$("#provinceCode").blur(function(e) {
 	    if ($(this).val() == "") {
 	        $("#provinceError").css("color", "red");
 	        $("#provinceError").text("省份不能为空");

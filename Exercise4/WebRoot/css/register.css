@@ -35,22 +35,22 @@ div p2{
     
 }
 
-#button {
+#registerForm #button {
     background-color: #4CAF50;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 14px 40px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin: 2px auto;
     cursor: pointer;
     border-radius: 12px;
-    width: 170px;
+    width: 150px;
 }
 
-#button:hover {
+#registerForm #button:hover {
     background: #2ecc71;
     border-color: #2ecc71;
 }
@@ -71,7 +71,14 @@ div p2{
     margin-left: auto;
 }
 
-#loginForm input[type='text'], #loginForm input[type='password']
+form.registerForm p img{
+	position: absolute;
+	top: 9px;
+	left: 40px;
+	border-radius: 4px;
+}
+
+#registerForm input[type='text'], #registerForm input[type='password']
     {
     border: 0;
     background: none;

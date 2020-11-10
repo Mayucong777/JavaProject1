@@ -42,10 +42,13 @@ public class ajaxRegisterCheck extends HttpServlet {
 			// 1.获取参数值
 			String userName = request.getParameter("userName");
 			String password = request.getParameter("password");
-			String chrName = request.getParameter("name");
-			String mail = request.getParameter("E-mail");
+			String chrName = request.getParameter("chrName");
+			String mail = request.getParameter("mail");
 			String provinceCode = request.getParameter("provinceCode");
 			String cityCode = request.getParameter("cityCode");
+			
+			//决定最后执行修改还是新增
+			String action=request.getParameter("action");
 			
 			int flag = Integer.parseInt(request.getParameter("flag"));
 			System.out.println(userName);
@@ -71,15 +74,27 @@ public class ajaxRegisterCheck extends HttpServlet {
 			}else{
 				
 				User user=new User(userName,password,chrName,mail,provinceCode,cityCode);
+				if(action.equals("") || action.equals("insert")){
+					if(userDao.insert(user)==true){
+						map.put("register", 0);
+					}
+						
+					else {
+						map.put("register", 1);
+						
+					}
+				}
+				else if(action.equals("update")){
+					if(userDao.update(user)==true){
+						map.put("register", 0);
+					}
+						
+					else {
+						map.put("register", 1);
+						
+					}
+				}
 				
-				if(userDao.insert(user)==true){
-					map.put("register", 0);
-				}
-					
-				else {
-					map.put("register", 1);
-					
-				}
 			}
 			
 			
